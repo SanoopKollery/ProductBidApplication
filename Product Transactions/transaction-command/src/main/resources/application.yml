@@ -1,0 +1,21 @@
+server:
+    port: 5002
+spring:
+    data:
+        mongodb:
+            authentication-database: examples
+            database: examples
+            username: api_user
+            password: NdEep0XLpMNKUmgQVa81oDCx7mrSRodh0Z79qdX3
+            host: localhost
+            port: 30000
+    kafka:
+        bootstrap-servers: localhost:29093
+        consumer:
+            group-id: test-consumer-group
+    application:
+        name: transaction-command
+message:
+    topic:
+        createTransaction: create-transaction
+        updateTransaction: update-transaction

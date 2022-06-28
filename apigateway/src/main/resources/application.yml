@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: bidding-api-gateway
+
+  ##GATEWAY CONFIGURATIONS
+  cloud:
+    gateway:
+      routes:
+        ## PRODUCT-COMMAND SERVICE
+        - id: PRODUCT-COMMAND
+          uri: lb://PRODUCT-COMMAND
+          predicates:
+            - Path=/pc/**
+          filters:
+            - StripPrefix=1
+        ## PRODUCT-Query SERVICE
+        - id: PRODUCT-QUERY
+          uri: lb://PRODUCT-QUERY
+          predicates:
+            - Path=/pq/**
+          filters:
+              - StripPrefix=1
+
+        ## TRANSACTION-COMMAND SERVICE
+        - id: TRANSACTION-COMMAND
+          uri: lb://TRANSACTION-COMMAND
+          predicates:
+            - Path=/tc/**
+          filters:
+            - StripPrefix=1
+
+        ## TRANSACTION-Query SERVICE
+        - id: TRANSACTION-QUERY
+          uri: lb://TRANSACTION-QUERY
+          predicates:
+            - Path=/tq/**
+          filters:
+            - StripPrefix=1
+
+server:
+  port: 8082
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka

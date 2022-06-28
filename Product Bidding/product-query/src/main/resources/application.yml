@@ -1,0 +1,22 @@
+server:
+    port: 5001
+spring:
+    data:
+        mongodb:
+            authentication-database: examples
+            database: examples
+            username: api_user
+            password: NdEep0XLpMNKUmgQVa81oDCx7mrSRodh0Z79qdX3
+            host: localhost
+            port: 30003
+    kafka:
+        bootstrap-servers: localhost:29092
+        consumer:
+            group-id: test-consumer-group
+    application:
+        name: product-query
+message:
+    topic:
+        createProduct: create-product
+        updateProduct: update-product
+        deleteProduct: delete-product
