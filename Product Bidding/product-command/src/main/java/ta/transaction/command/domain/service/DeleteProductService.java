@@ -40,7 +40,7 @@ public class DeleteProductService {
     public ProductDeleteEvent delete(String productID) throws ProductNotFound, TransactionExistsException {
         String transactionResponse = "";
         try {
-            transactionResponse = restTemplate.getForEntity("http://localhost:5003/e-auction/api/v1/seller/show-bids/" + productID,
+            transactionResponse = restTemplate.getForEntity("http://localhost:8082/tq/e-auction/api/v1/seller/show-bids/" + productID,
                    String.class).getBody();
        }
        catch (Exception e)

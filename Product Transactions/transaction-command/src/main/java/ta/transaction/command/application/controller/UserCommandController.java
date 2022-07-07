@@ -22,6 +22,7 @@ public class UserCommandController {
     @PostMapping("/place-bid")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public TransactionCreatedEvent newPhone(@RequestBody @Valid CreateTransactionRequest req) throws TransactionExistsException, ProductNotFound, URISyntaxException {
+        System.out.println(req);
         return createTransactionService.create(req);
     }
 

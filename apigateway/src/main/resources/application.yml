@@ -7,14 +7,14 @@ spring:
     gateway:
       routes:
         ## PRODUCT-COMMAND SERVICE
-        - id: PRODUCT-COMMAND
+        - id: product-command
           uri: lb://PRODUCT-COMMAND
           predicates:
             - Path=/pc/**
           filters:
             - StripPrefix=1
         ## PRODUCT-Query SERVICE
-        - id: PRODUCT-QUERY
+        - id: product-query
           uri: lb://PRODUCT-QUERY
           predicates:
             - Path=/pq/**
@@ -36,6 +36,17 @@ spring:
             - Path=/tq/**
           filters:
             - StripPrefix=1
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedHeaders:
+              - content-type
+            allowedMethods:
+              - GET
+              - POST
+    discovery:
+      enabled: true
 
 server:
   port: 8082
@@ -44,3 +55,4 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka
+

@@ -8,6 +8,7 @@ import ta.transaction.command.infrasturcture.eventsourcing.events.TransactionUpd
 
 import java.math.BigDecimal;
 
+@CrossOrigin(origins = "http://localhost:8081")
 @RestController
 @RequestMapping(path = "/e-auction/api/v1/buyer")
 public class UpdateCommnadController {

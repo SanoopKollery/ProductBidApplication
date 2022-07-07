@@ -10,4 +10,5 @@ import java.util.UUID;
 @Data
 public class ProductCreatedEvent {
     private Product product;
+    private boolean saved;
 }

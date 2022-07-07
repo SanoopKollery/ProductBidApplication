@@ -23,7 +23,7 @@ public class UserQueryController {
 
     @GetMapping("show-bids/{productID}")
     @ResponseStatus(HttpStatus.OK)
-    public TransactionResponse findTransaction(@PathVariable String productID) {
+    public List<TransactionResponse> findTransaction(@PathVariable String productID) {
         try{
             return findTransactionService.findByProductID(productID);
         }catch (TransactionNotFoundException | URISyntaxException ex) {

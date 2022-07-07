@@ -29,7 +29,7 @@ public class KafkaTransactionCreatedEventSourcing {
         val json = objectWriter.writeValueAsString(product);
         log.info("Send json '{}' to topic {}", json, topicName);
         kafkaTemplate.send(topicName, json);
-        return ProductCreatedEvent.builder().product(product).build();
+        return ProductCreatedEvent.builder().saved(true).product(product).build();
     }
 
 }

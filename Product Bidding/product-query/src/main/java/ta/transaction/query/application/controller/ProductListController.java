@@ -11,6 +11,7 @@ import ta.transaction.query.domain.service.FindProductService;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:8081")
 @RestController
 @Log4j2
 @RequestMapping("/e-auction/api/v1/seller")

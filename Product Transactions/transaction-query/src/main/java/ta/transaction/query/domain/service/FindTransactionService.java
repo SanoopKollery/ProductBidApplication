@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
@@ -31,7 +32,7 @@ public class FindTransactionService {
     @Autowired
     private RestTemplate restTemplate;
 
-    public TransactionResponse findByProductID(String productID) throws TransactionNotFoundException, URISyntaxException {
+    public List<TransactionResponse> findByProductID(String productID) throws TransactionNotFoundException, URISyntaxException {
         URI uri = new URI("http://localhost:5001/e-auction/api/v1/seller/get-product/"+productID);
         TransactionResponse response = new TransactionResponse();
         try {
@@ -47,7 +48,7 @@ public class FindTransactionService {
         transactions = transactions.stream().sorted(Comparator.comparingDouble(Transaction::getBidAmount).reversed())
                 .collect(Collectors.toList());
         response.setTransactions(transactions);
-        return  response;
+        return Arrays.asList(response);
         //return transactionConverter.transactionResponse(transactions);
     }
 

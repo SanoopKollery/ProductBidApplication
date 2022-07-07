@@ -19,3 +19,7 @@ message:
     topic:
         createTransaction: create-transaction
         updateTransaction: update-transaction
+
+eureka:
+    instance:
+        prefer-ip-address: true

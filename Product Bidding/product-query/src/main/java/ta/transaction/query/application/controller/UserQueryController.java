@@ -9,6 +9,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 
+@CrossOrigin(origins = "http://localhost:8081")
 @RestController
 @Log4j2
 @RequestMapping("/e-auction/api/v1/seller")

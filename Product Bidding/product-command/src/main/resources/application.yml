@@ -15,9 +15,15 @@ spring:
             group-id: test-consumer-group
     application:
         name: product-command
+    cloud:
+        discovery:
+            enabled: true
 message:
     topic:
         createProduct: create-product
         updateProduct: update-product
         deleteProduct: delete-product
 
+eureka:
+    instance:
+        prefer-ip-address: true

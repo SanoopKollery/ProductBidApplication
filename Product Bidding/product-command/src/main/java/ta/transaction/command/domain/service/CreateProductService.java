@@ -30,6 +30,8 @@ public class CreateProductService {
     private KafkaTransactionCreatedEventSourcing kafkaProductCreatedEventSourcing;
 
     public ProductCreatedEvent create(CreateProductRequest request) throws TransactionExistsException, FutureDateException, ProductCategoryException {
+        if (request.getBidEndDate().length() == 10)
+            request.setBidEndDate(String.format("%s 00:00:00",request.getBidEndDate()));
         boolean futureOrNot = getFutureOrNot(Timestamp.valueOf(request.getBidEndDate()));
         if (!futureOrNot)
             throw new FutureDateException("Bid end date should be future !!");
