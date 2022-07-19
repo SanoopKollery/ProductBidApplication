@@ -1,8 +1,10 @@
 package ta.transaction.command.domain.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.client.RestTemplate;
-import ta.transaction.command.application.dto.CreateTransactionRequest;
+import ta.transaction.command.dto.CreateTransactionRequest;
 import ta.transaction.command.domain.converter.TransactionConverter;
 import ta.transaction.command.domain.model.Product;
 import ta.transaction.command.exception.ProductNotFound;
@@ -21,6 +23,7 @@ import java.net.URISyntaxException;
 @Service
 @Log4j2
 public class CreateTransactionService {
+    Logger logger= LoggerFactory.getLogger(CreateTransactionService.class);
 
     @Autowired
     private TransactionConverter transactionConverter;
@@ -41,7 +44,9 @@ public class CreateTransactionService {
         }
         URI uri = new URI("http://localhost:5001/e-auction/api/v1/seller/get-product/"+request.getProductId());
         try {
+
             Product product = restTemplate.getForObject(uri, Product.class);
+            logger.info("BID Created Successfully");
         }
         catch (Exception e)
         {

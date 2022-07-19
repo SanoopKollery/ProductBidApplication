@@ -1,4 +1,4 @@
-package ta.transaction.command.application.dto;
+package ta.transaction.command.dto;
 
 import lombok.Builder;
 import lombok.Data;

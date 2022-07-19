@@ -1,7 +1,7 @@
-package ta.transaction.command.application.controller;
+package ta.transaction.command.controller;
 
 import org.springframework.web.bind.annotation.*;
-import ta.transaction.command.application.dto.CreateTransactionRequest;
+import ta.transaction.command.dto.CreateTransactionRequest;
 import ta.transaction.command.domain.service.CreateTransactionService;
 import ta.transaction.command.exception.ProductNotFound;
 import ta.transaction.command.exception.TransactionExistsException;

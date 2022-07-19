@@ -1,6 +1,6 @@
 package ta.transaction.command.domain.converter;
 
-import ta.transaction.command.application.dto.CreateTransactionRequest;
+import ta.transaction.command.dto.CreateTransactionRequest;
 import ta.transaction.command.domain.model.Transaction;
 import org.springframework.stereotype.Component;
 

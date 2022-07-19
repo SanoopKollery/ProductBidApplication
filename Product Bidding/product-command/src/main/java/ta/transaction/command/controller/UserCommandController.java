@@ -1,7 +1,7 @@
-package ta.transaction.command.application.controller;
+package ta.transaction.command.controller;
 
 import org.springframework.web.bind.annotation.*;
-import ta.transaction.command.application.dto.CreateProductRequest;
+import ta.transaction.command.dto.CreateProductRequest;
 import ta.transaction.command.domain.service.CreateProductService;
 import ta.transaction.command.exception.FutureDateException;
 import ta.transaction.command.exception.ProductCategoryException;

@@ -3,6 +3,8 @@ package ta.transaction.command.domain.service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.extern.log4j.Log4j2;
 import lombok.val;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -17,6 +19,8 @@ import java.math.BigDecimal;
 @Service
 @Log4j2
 public class UpdateTransactionService {
+
+    Logger logger= LoggerFactory.getLogger(UpdateTransactionService.class);
 
     @Autowired
     private TransactionRepository transactionRepository;
@@ -39,12 +43,13 @@ public class UpdateTransactionService {
         val trx2=transactionConverter.createTransactionRequestWithID(transaction1);
         try
         {
+            logger.info("Updating transaction with ID");
             transactionRepository.save(trx2);
             return kafkaTransactionUpdatedEventSourcing.publicUpdateTransactionEvent(trx2);
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         } catch (Exception e) {
-            System.out.println(e);
+            logger.error(e.getMessage());
         }
         return null;
     }

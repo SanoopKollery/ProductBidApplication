@@ -1,7 +1,9 @@
 package ta.transaction.command.domain.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import ta.transaction.command.application.dto.CreateProductRequest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import ta.transaction.command.dto.CreateProductRequest;
 import ta.transaction.command.domain.converter.ProductConverter;
 import ta.transaction.command.domain.model.ProductCategory;
 import ta.transaction.command.exception.FutureDateException;
@@ -22,6 +24,8 @@ import java.util.UUID;
 @Log4j2
 public class CreateProductService {
 
+    Logger logger= LoggerFactory.getLogger(CreateProductService.class);
+
     @Autowired
     private ProductConverter productConverter;
     @Autowired
@@ -38,7 +42,7 @@ public class CreateProductService {
         ProductCategory cat = ProductCategory.valueOf(request.getCategory());
         if (cat == null || cat.getDisplayName() == null)
             throw new ProductCategoryException("Product Category Not Valid !");
-        log.info("Creating Product");
+        logger.info("Creating Product");
         val product = productConverter.createProductRequest(request);
         val id = UUID.randomUUID();
         product.setProductId(String.valueOf(id));
