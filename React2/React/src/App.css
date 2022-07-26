@@ -1,0 +1,46 @@
+.list {
+  text-align: left;
+  max-width: 750px;
+  margin: auto;
+}
+
+.submit-form {
+  max-width: 300px;
+  margin: auto;
+}
+
+.edit-form {
+  max-width: 300px;
+  margin: auto;
+}
+
+.divTable
+    {
+        display:  table;
+        width: 200%;
+        color: white;
+        background-color:rgb(3, 6, 91);
+        border-collapse: unset;
+        text-align: center;
+        
+    }
+
+#resp-table {
+  width: 200%;
+  display: table;
+}
+#resp-table-body{
+  display: table-row-group;
+}
+.resp-table-row{
+  display: table-row;
+}
+.table-body-cell{
+  display: table-cell;
+  border: 1px solid #dddddd;
+  background-color: white;
+  color: black;
+  padding: 8px;
+  line-height: 1.42857143;
+  vertical-align: top;
+}
