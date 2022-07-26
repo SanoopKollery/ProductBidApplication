@@ -61,4 +61,11 @@ public class FindProductService {
         List<Product> products = productRepository.findAll();
         return products;
     }
+
+    public List<Product> findByProductName(String productName) {
+        if (productName == null)
+            return productRepository.findAll();
+        List<Product> products = productRepository.findByProductNameIsLike(productName);
+        return products;
+    }
 }

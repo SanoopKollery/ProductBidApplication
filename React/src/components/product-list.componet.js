@@ -1,24 +1,24 @@
 import React, { Component } from "react";
 import TutorialDataService from "../services/tutorial.service";
 import { Link } from "react-router-dom";
-import TransactionDetails from "./transaction-list-component";
+//import TransactionDetails from "./transaction-list-component";
 
 export default class ProductList extends Component {
   constructor(props) {
     super(props);
-    this.onChangeSearchTitle = this.onChangeSearchTitle.bind(this);
+    this.onChangeSearchProductName = this.onChangeSearchProductName.bind(this);
     this.retrieveTutorials = this.retrieveTutorials.bind(this);
     this.refreshList = this.refreshList.bind(this);
     this.setActiveTutorial = this.setActiveTutorial.bind(this);
     this.removeAllTutorials = this.removeAllTutorials.bind(this);
-    this.searchTitle = this.searchTitle.bind(this);
+    this.searchProductName = this.searchProductName.bind(this);
     this.getBids = this.getBids.bind(this);
     this.state = {
       bids: [],
       tutorials: [],
       currentTutorial: null,
       currentIndex: -1,
-      searchTitle: "", 
+      searchProductName: "", 
     };
     this.headers = [
 			{ key: 'bidAmount', label: 'Bid Amount'},
@@ -36,11 +36,11 @@ export default class ProductList extends Component {
     this.getBids();
   }
 
-  onChangeSearchTitle(e) {
-    const searchTitle = e.target.value;
+  onChangeSearchProductName(e) {
+    const searchProductName = e.target.value;
 
     this.setState({
-      searchTitle: searchTitle
+      searchProductName: searchProductName
     });
   }
   retrieveTutorials() {
@@ -109,13 +109,13 @@ export default class ProductList extends Component {
     });
   }
 
-  searchTitle() {
+  searchProductName() {
     this.setState({
       currentTutorial: null,
       currentIndex: -1
     });
 
-    TutorialDataService.findByTitle(this.state.searchTitle)
+    TutorialDataService.findByProductName(this.state.searchProductName)
       .then(response => {
         this.setState({
           tutorials: response.data,
@@ -128,31 +128,24 @@ export default class ProductList extends Component {
   }
 
   render() {
-    const { searchTitle, tutorials, currentTutorial, currentIndex,bids,currentTransaction } = this.state;
+    const { searchProductName, tutorials, currentTutorial, currentIndex,bids} = this.state;
     
     return (
       <div className="list row">
         <div className="col-md-8">
           <div className="input-group mb-3">
-          <select className="form-control"
-          onChange={() => this.setActiveTutorial(tutorials, this.state.value)}
-          >
-            { tutorials &&
-              tutorials.map((tutorial, index) => (
-                <option
-                  key={index}
-                  value={index}
-                  onChange={() => this.onChangeSearchTitle(tutorial,index)}
-                >
-                  {tutorial.productName}
-                </option>
-              ))}
-          </select>
+          <input
+              type="text"
+              className="form-control"
+              placeholder="Search by Product Name"
+              value={searchProductName}
+              onChange={this.onChangeSearchProductName}
+            />
             <div className="input-group-append">
-              <button
+            <button
                 className="btn btn-outline-secondary"
                 type="button"
-                onClick={this.searchTitle}
+                onClick={this.searchProductName}
               >
                 Search
               </button>

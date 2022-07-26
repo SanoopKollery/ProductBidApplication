@@ -9,6 +9,8 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 
+import java.util.List;
+
 @CrossOrigin(origins = "http://localhost:8081")
 @RestController
 @Log4j2
@@ -28,4 +30,17 @@ public class UserQueryController {
             throw new FindTransactionException();
         }
     }
+
+    @GetMapping("/get-product/name/{productName}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Product> findProductByName(@PathVariable String productName) {
+        try{
+            return findProductService.findByProductName(productName);
+        }catch (Exception ex) {
+            log.error(ex);
+            throw new FindTransactionException();
+        }
+    }
+
+
 }

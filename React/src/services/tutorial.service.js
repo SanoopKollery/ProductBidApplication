@@ -25,8 +25,8 @@ class TutorialDataService {
     return http.delete(`/tutorials`);
   }
 
-  findByTitle(title) {
-    return http.get(`/tutorials?title=${title}`);
+  findByProductName(productName) {
+    return http.get(`/pq/e-auction/api/v1/seller/get-product/name/${productName}`);
   }
 
   saveBid(data){

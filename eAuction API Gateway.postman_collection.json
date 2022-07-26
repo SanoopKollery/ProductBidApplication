@@ -1,0 +1,179 @@
+{
+	"info": {
+		"_postman_id": "80704f7e-1d2c-4c00-9294-c99b2e04b384",
+		"name": "eAuction API Gateway",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create product",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \r\n    \"productName\": \"Chain\",\r\n    \"shortDescription\": \"Bangle\",\r\n    \"description\": \"Bangle\",\r\n    \"category\": \"ORNAMENT\",\r\n    \"startingPrice\": 800.00,\r\n    \"bidEndDate\": \"2022-11-25\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/pc/e-auction/api/v1/seller/add-product",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"pc",
+						"e-auction",
+						"api",
+						"v1",
+						"seller",
+						"add-product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/pq/e-auction/api/v1/seller/get-product",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"pq",
+						"e-auction",
+						"api",
+						"v1",
+						"seller",
+						"get-product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Product",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/pc/e-auction/api/v1/seller/delete/d094b50c-cba2-4b13-b29e-60e07c53f75f",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"pc",
+						"e-auction",
+						"api",
+						"v1",
+						"seller",
+						"delete",
+						"d094b50c-cba2-4b13-b29e-60e07c53f75f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cretate Bids",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"firstName\" : \"Avirup\",\r\n\t\"lastName\":\"Avi\",\r\n\t\"address\":\"TestAddress\",\r\n\t\"city\":\"TestCity\",\r\n\t\"state\":\"TestState\",\r\n\t\"pin\":\"12345\",\r\n\t\"phone\":\"1234967890\",\r\n\t\"email\":\"som@gmail.com\",\r\n\t\"productId\":\"5116c6e9-7023-4cb2-b6a8-64a08f5691c4\",\r\n\t\"bidAmount\":\"1000.00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/tc/e-auction/api/v1/buyer/place-bid",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"tc",
+						"e-auction",
+						"api",
+						"v1",
+						"buyer",
+						"place-bid"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Bids",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5001/e-auction/api/v1/seller/get-product",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"e-auction",
+						"api",
+						"v1",
+						"seller",
+						"get-product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Bids",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/tq/e-auction/api/v1/seller/show-bids/5116c6e9-7023-4cb2-b6a8-64a08f5691c4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"tq",
+						"e-auction",
+						"api",
+						"v1",
+						"seller",
+						"show-bids",
+						"5116c6e9-7023-4cb2-b6a8-64a08f5691c4"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

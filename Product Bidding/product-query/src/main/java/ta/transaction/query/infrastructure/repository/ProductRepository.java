@@ -12,5 +12,7 @@ import java.util.UUID;
 @Repository
 public interface ProductRepository extends MongoRepository<Product, Integer> {
     Optional<Product> findByProductId(String productID);
+    List<Product> findByProductNameContains(String productName);
+    List<Product> findByProductNameIsLike(String productName);
 
 }
